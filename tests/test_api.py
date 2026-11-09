@@ -22,6 +22,14 @@ def test_metrics_counts_requests(client):
     assert 'http_requests_total{method="GET",path="/",status="200"}' in body
     assert "http_request_duration_seconds" in body
 
+def test_reset(client):
+    client.get("/")
+    response = client.post("/reset")
+    assert response.status_code == 200
+    assert response.json() == {"visites": 0}
+    follow_up = client.get("/")
+    assert follow_up.json() == {"visites": 1}
+    
 def test_version_header(client):
     response = client.get("/")
     assert response.status_code == 200
