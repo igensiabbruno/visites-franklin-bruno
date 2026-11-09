@@ -15,9 +15,14 @@ def test_health_redis_down(client, fake_server):
     assert resp.status_code == 503
     assert resp.text == "redis down"
 
-
+#ici nouveau test
 def test_metrics_counts_requests(client):
     client.get("/")
     body = client.get("/metrics").text
     assert 'http_requests_total{method="GET",path="/",status="200"}' in body
     assert "http_request_duration_seconds" in body
+
+def test_version_header(client):
+    response = client.get("/")
+    assert response.status_code == 200
+    assert response.headers.get("X-Visites-Version") == "0.1.0"
