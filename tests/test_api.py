@@ -15,7 +15,7 @@ def test_health_redis_down(client, fake_server):
     assert resp.status_code == 503
     assert resp.text == "redis down"
 
-
+#ici nouveau test
 def test_metrics_counts_requests(client):
     client.get("/")
     body = client.get("/metrics").text
