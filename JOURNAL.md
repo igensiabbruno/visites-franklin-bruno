@@ -24,6 +24,12 @@
 
 # combien de temp c'est ecoulé entre notre premier commit et sa fusion sur le main
 
-d'apres les commit visible sur le GUI il ya eu 
+D'apres les commit visible sur le GUI il ya eu 26 minutes et 6 secondes.
 
+# qu'est ce qui ne dépend pas de Github dans ce TP
 
+Tout le travail local (commandes Git, signatures SSH, résolution de conflits, conteneurisation Docker, tests pytest et contrôles pre-commit/ruff) est universel et fonctionne à l'identique sur GitLab, Gitea ou Forgejo. En revanche, les interactions distantes changent de syntaxe et d'outillage : la CLI GitHub (gh) est remplacée par glab ou tea, le terme « Pull Request » devient « Merge Request » sur GitLab, et l'enregistrement de la clé publique de signature dépend de l'interface propre à chaque forge.
+
+# pourquoi signer les commits si la forge vérifie déjà qui pousse ?
+
+L'authentification réseau de la forge contrôle uniquement le droit d'accès au serveur distant lors du dépôt, tandis que la signature cryptographique prouve de manière infalsifiable l'identité de l'auteur réel et garantit l'intégrité du code, même en dehors de la plateforme.
